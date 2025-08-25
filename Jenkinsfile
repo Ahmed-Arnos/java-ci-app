@@ -1,10 +1,11 @@
 pipeline {
   agent any
   parameters {
-    string(name:'DOCKER_IMAGE',    defaultValue:'ahmedarnos/java-ci-app')
-    string(name:'IMAGE_TAG',       defaultValue:'latest')
-    string(name:'DOCKER_CREDS_ID', defaultValue:'dockerhub-creds')
+    string defaultValue: 'ahmedarnos/java-ci-app', description: 'Docker image name to build & push', name: 'DOCKER_IMAGE'
+    string defaultValue: 'latest', description: 'Docker image tag', name: 'IMAGE_TAG'
+    string defaultValue: 'dockerhub-creds', description: 'Jenkins credentials ID for DockerHub', name: 'DOCKER_CREDS_ID'
   }
+
   stages {
 
     stage('lib'){ steps{ script{
